@@ -27,27 +27,3 @@ services:
   restart: always
   depends_on:
    - reverse-proxy
-
- site3:
-  image: 'geerlingguy/kube101:hello-go'
-  container_name: site3
-  hostname: site3
-  restart: always
-  depends_on:
-   - reverse-proxy
-
- site4:
-  image: 'geerlingguy/kube101:hello-go'
-  container_name: site4
-  hostname: site4
-  restart: always
-  depends_on:
-   - reverse-proxy
-
- site5:
-  image: 'geerlingguy/kube101:hello-go'
-  container_name: site5
-  hostname: site5
-  restart: always
-  depends_on:
-   - reverse-proxy
