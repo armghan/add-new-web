@@ -1,0 +1,8 @@
+
+ siteX:
+  image: 'IMAGE'
+  container_name: siteX
+  hostname: siteX
+  restart: always
+  depends_on:
+   - reverse-proxy

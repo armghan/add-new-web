@@ -1,0 +1,53 @@
+version: '3.7'
+
+services:
+ reverse-proxy:
+  image: 'nginx:latest'
+  container_name: reverse-proxy
+  hostname: reverse-proxy
+  volumes:
+    - '${PWD}/nginx-conf:/etc/nginx/sites-enabled'
+  restart: always
+  ports:
+    - 80:80
+    - 443:443
+
+ site1:
+  image: 'geerlingguy/kube101:hello-go'
+  container_name: site1
+  hostname: site1
+  restart: always
+  depends_on:
+   - reverse-proxy
+
+ site2:
+  image: 'geerlingguy/kube101:hello-go'
+  container_name: site2
+  hostname: site2
+  restart: always
+  depends_on:
+   - reverse-proxy
+
+ site3:
+  image: 'geerlingguy/kube101:hello-go'
+  container_name: site3
+  hostname: site3
+  restart: always
+  depends_on:
+   - reverse-proxy
+
+ site4:
+  image: 'geerlingguy/kube101:hello-go'
+  container_name: site4
+  hostname: site4
+  restart: always
+  depends_on:
+   - reverse-proxy
+
+ site5:
+  image: 'geerlingguy/kube101:hello-go'
+  container_name: site5
+  hostname: site5
+  restart: always
+  depends_on:
+   - reverse-proxy
