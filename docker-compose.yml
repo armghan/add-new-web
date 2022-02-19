@@ -7,6 +7,8 @@ services:
   hostname: reverse-proxy
   volumes:
     - '${PWD}/nginx-conf:/etc/nginx/sites-enabled'
+    - '/var/log/nginx:/var/log/nginx'
+    - '/etc/letsencrypt:/etc/letsencrypt'
   restart: always
   ports:
     - 80:80
@@ -14,16 +16,20 @@ services:
 
  site1:
   image: 'geerlingguy/kube101:hello-go'
-  container_name: site1
+  container_name: site1.example.com
   hostname: site1
   restart: always
+  volumes:
+   - '${PWD}/ENV/env-site1:/opt/my-app-dir/ENV'
   depends_on:
    - reverse-proxy
 
  site2:
   image: 'geerlingguy/kube101:hello-go'
-  container_name: site2
+  container_name: site2.example.com
   hostname: site2
   restart: always
+  volumes:
+   - '${PWD}/ENV/env-site2:/opt/my-app-dir/ENV'
   depends_on:
    - reverse-proxy

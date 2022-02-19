@@ -1,8 +1,10 @@
 
  siteX:
-  image: 'IMAGE'
-  container_name: siteX
+  image: 'geerlingguy/kube101:hello-go'
+  container_name: siteX.example.com
   hostname: siteX
   restart: always
+  volumes:
+   - '${PWD}/ENV/env-siteX:/opt/my-app-dir/ENV'
   depends_on:
    - reverse-proxy
