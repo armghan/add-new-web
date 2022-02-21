@@ -15,5 +15,5 @@ cat new-container >> docker-compose.yml
 
 rm -f new-container
 rm -f .env-$sitename
-#docker-compose up -d
-#docker restart reverse-proxy
+docker-compose up -d
+docker restart reverse-proxy
